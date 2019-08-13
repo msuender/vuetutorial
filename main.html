@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>Vue Tutorial</title>
+    <meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+<div id="app">
+  <h2>Message with @click (v-on)</h2>
+  <p v-once>{{ msg }}</p>
+  <p v-show="show">Tataaah!</p>
+  <button @click="showLine">Show one more line</button>
+</div>
+
+<div id="list" >
+  <h2>Static list using v-for</h2>
+  <p v-for="item in items">
+    Name: {{ item.name }} Preis: {{ item.preis }}  
+  </p>
+</div>
+
+<div id="listcomp" >
+    <h2>List gernerated using a component and :binding</h2>
+      <mylist v-for="item in items" :key= "item.name" :item="item"></mylist>
+</div>
+
+<div id="tabelle1">
+  <h2>Tabel using v-if v-else and methods to add remove</h2>
+  <div v-if="rows.length < 7">
+    <table>
+      <tr>
+        <th>Index</th><th>Name</th><th>Price</th>
+      </tr>
+      <tr v-for="(item, index) in rows" :key="item.name">
+        <td>{{ index }}</td><td>{{ item.name }}</td><td>{{ item.preis }}</td>
+      </tr>
+    </table>
+  </div>
+  <div v-else>
+    <p>Too many elements ({{ rows.length }})!</p>
+  </div>
+  <div>
+    Name: <input v-model="rowName"/>Preis:<input v-model="rowPreis"/>
+    <button @click="addRow">Add</button>
+    <button v-if="rows.length > 0" @click="popRow">Pop</button>
+  </div>
+</div>
+
+<div id="eingabe">
+  <h2>Input using v-model triggering a method on CLICK</h2>
+  <p>
+    <span>Input is: {{ itemName }}</span><br>
+    Enter something: <input v-model="itemName"/>
+  </p>
+  <p>
+    <button @click="setItemName">Set some Input</button>
+  </p>
+</div>
+
+<div id="fulllist">
+  <h3>Component with TEMPLATE inside</h3>
+  <full-list :items="items" :title="title" subtitle="Fix Subtitel"></full-list>
+</div>
+
+<div id="binding">
+  <p :style="steil">Binding of Attributes {{ etwas }}  {{steil}}</p>
+</div>
+
+<div id="reactivet">
+  <h3>Reactive Set</h3>
+  <p>{{ theobject }}</p>
+  <code>vreactivet.theobject.due="due" does NOT work!</code>
+  <button @click="setDue">Using $set</button>
+  <code v-show="theobject.due">this.$set(this.theobject,'due',"due")</code>
+</div>
+
+<div id="onkey">
+  <h3>Usage of v-on with keys and other</h3>
+  <p>
+    Type and press ENTER: <input v-model="keyupenter" @keyup.enter="ausgabe('Bravo', $event)"/>
+  </p> 
+</div>
+
+<script src="scripts.js"></script>
+
+</html>
