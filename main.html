@@ -5,6 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
+<body>
 
 <div id="app">
   <h2>Message with @click (v-on)</h2>
@@ -64,7 +65,9 @@
 </div>
 
 <div id="binding">
+  <h3> Bind Attributes</h3>
   <p :style="steil">Binding of Attributes {{ etwas }}  {{steil}}</p>
+  <p>The <abbr :title="abbrtitle">ABC</abbr> has 26 letters.</p> 
 </div>
 
 <div id="reactivet">
@@ -89,9 +92,27 @@
   <br>
   You selected: {{ answer }}
   <br>
-  <code>Strange: Not possible to user the bind answer in the alert, is always the old value </code>
+  <code>Strange: Not possible to use the bind `answer` in the alert, is always the old value, you neet to get the value from the Event! </code>
+</div>
+
+<div id="radiofor">
+  <h3>Generate List of options with v-for</h3>
+  <div v-for="option in options" :key= "options.name">
+    <input type="radio" :value="option.value" v-model= "selectedDrink" name="selectedDrink"> {{ option.name }}
+  </div>
+  <p>Other way with v-for inside the input tag - not good, cannot put the description at the end 
+      <input  v-for="option in options" :key= "options.name" type="radio" :value="option.value" v-model= "selectedDrink" name="selectedDrink">
+  </p>
+  <div>
+    <h4>Same with SELECT</h4>
+    <select v-model= "selectedDrink">
+      <option v-for="option in options" :key= "options.name" :value="option.value">{{ option.name }}</option>
+    </select>
+  </div>
+  You selected: {{ selectedDrink }}
 </div>
 
 <script src="scripts.js"></script>
 
+</body>
 </html>

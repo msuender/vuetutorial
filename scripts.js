@@ -57,7 +57,7 @@ Vue.component('mylist',
     {
         props: ["item"],
         template:
-        "<p>Name: {{ item.name }} Preis: {{ item.preis }}</p>"
+        "<p>Name: {{ item.name }} Price: {{ item.preis }}</p>"
     }
 )
 
@@ -101,7 +101,8 @@ var vbinding = new Vue(
         el: '#binding',
         data: {
             etwas: "blaaah",
-            steil: { color: brightcolor}
+            steil: { color: brightcolor},
+            abbrtitle: "Alphabet"
         }
     }
 )
@@ -145,9 +146,23 @@ var vradioon = new Vue(
         },
         methods: {
             radioselected(message) {
-                alert("You selected " + message + " but bound answer is " + this.answer);
+                alert("You selected " + message + " but bound answer is " + this.answer + "BUT the event.target.value is" + event.target.value);
             }
         }
     }
 
+)
+
+var vradiofor = new Vue(
+    {
+        el: "#radiofor",
+        data: {
+            options: [ 
+                {name: "Beer", value: 1},
+                {name: "Wine", value: 2},
+                {name: "Water", value: 3}
+            ],
+            selectedDrink: ""
+        }
+    }
 )
