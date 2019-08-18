@@ -130,9 +130,24 @@ var vonkey = new Vue(
         },
         methods: {
             ausgabe(message, event) {
-                alert(message + " Input was: " + this.keyupenter + " Key pressed" + event.key);
+                alert(message + " Input was: " + this.keyupenter + " Key pressed " + event.key);
                 //console.log(event);
             }
         }
     }
+)
+
+var vradioon = new Vue(
+    {
+        el: "#radioon",
+        data: {
+            answer: ""
+        },
+        methods: {
+            radioselected(message) {
+                alert("You selected " + message + " but bound answer is " + this.answer);
+            }
+        }
+    }
+
 )

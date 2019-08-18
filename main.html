@@ -82,6 +82,16 @@
   </p> 
 </div>
 
+<div id="radioon">
+  <h3>Radio Button with v-on and Event</h3>
+  Yes <input type="radio" name="answer" value="Yes" v-model="answer" @click="radioselected('Yes')">
+  No <input type="radio" name="answer" value="No" v-model="answer" @click="radioselected('No')">
+  <br>
+  You selected: {{ answer }}
+  <br>
+  <code>Strange: Not possible to user the bind answer in the alert, is always the old value </code>
+</div>
+
 <script src="scripts.js"></script>
 
 </html>
