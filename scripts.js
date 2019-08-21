@@ -166,3 +166,43 @@ var vradiofor = new Vue(
         }
     }
 )
+
+/**LANGUAGE SELECTION */
+
+const langData = {
+    "de": { "language": "German", "greet": "Hallo!", "disabled": true},
+    "mx": { "language": "Mexican", "greet": "Hola!", "disabled": false},
+    "en": { "language": "English", "greet": "Hello!", "disabled": false},
+}
+
+let defaultLang = "de";
+let prevLang = defaultLang;
+let selectedLang = langData[defaultLang];
+
+let disabledLang = {
+    "de": true,
+    "mx": false,
+    "en": false,
+}
+
+var vlanguages = new Vue(
+    {
+        el: "#languages",
+        data: {
+            langData,
+            selectedLang,
+            disabledLang,
+            prevLang,
+        },
+        methods: {
+            setLanguage(language) {
+                this.disabledLang[this.prevLang] = false;
+                this.selectedLang = this.langData[language];
+                this.disabledLang[language] = true;
+                this.prevLang = language;
+            }
+        }
+
+    }
+)
+

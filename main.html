@@ -112,6 +112,14 @@
   You selected: {{ selectedDrink }}
 </div>
 
+<div id="languages">
+  <h2>Lanuage Selection</h2>
+  {{ selectedLang.greet }} ({{ selectedLang.language}})
+  <button @click="setLanguage('en')" :disabled="disabledLang.en">English</button>
+  <button @click="setLanguage('de')" :disabled="disabledLang.de">German</button>
+  <button @click="setLanguage('mx')" :disabled="disabledLang.mx">Mexican</button>
+</div>
+
 <script src="scripts.js"></script>
 
 </body>
