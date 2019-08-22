@@ -113,11 +113,17 @@
 </div>
 
 <div id="languages">
-  <h2>Lanuage Selection</h2>
+  <h2>Language Selection</h2>
   {{ selectedLang.greet }} ({{ selectedLang.language}})
   <button @click="setLanguage('en')" :disabled="disabledLang.en">English</button>
   <button @click="setLanguage('de')" :disabled="disabledLang.de">German</button>
   <button @click="setLanguage('mx')" :disabled="disabledLang.mx">Mexican</button>
+</div>
+
+<div id="hello">
+  <hello-one sometext="some text"></hello-one>
+  <code><hello-one sometext="some text"></hello-one></code>
+  <span>NO <code>:</code> used for props!</span>
 </div>
 
 <script src="scripts.js"></script>

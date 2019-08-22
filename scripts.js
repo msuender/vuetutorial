@@ -74,7 +74,7 @@ Vue.component('full-list',
     {
         props: ['items','title','subtitle'],
         template: `
-        <div class="fulllist">
+        <div class="graycolor">
         <h2>{{ title }}</h2>
         <h3>{{ subtitle }}</h3>
             <div v-for="item in items">
@@ -206,3 +206,39 @@ var vlanguages = new Vue(
     }
 )
 
+/** MORE COMPONENTS */
+
+let helloData = { h1: "HELLO ALL :-)"};
+
+//global registered component
+
+Vue.component('say-hello', {
+        data: function() {
+            return helloData;
+        },
+        template: `
+        <h1>{{ h1 }}</h1>
+        `
+    }
+)
+
+Vue.component('hello-one', {
+        props: ['sometext'],
+        template: `
+        <div>
+            <say-hello></say-hello>
+            And here {{ sometext }}
+        </div>
+        `
+    }
+)
+
+//you need to create a pimary Vue instance to be able to use!
+let vhello = new Vue(
+    {
+        el: "#hello",
+        data: {
+            sometext: ""
+        }
+    }
+)
