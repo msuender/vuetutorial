@@ -222,6 +222,7 @@ Vue.component('say-hello', {
     }
 )
 
+// <div> needed to wrap the component used!!
 Vue.component('hello-one', {
         props: ['sometext'],
         template: `
@@ -239,6 +240,29 @@ let vhello = new Vue(
         el: "#hello",
         data: {
             sometext: ""
+        }
+    }
+)
+
+/** LOCAL component */
+
+const myLocalComp =  {
+    props: ['mytext'],
+    template: `
+    <div>
+        My text is: <code>{{ mytext }}</code>
+    </div>
+    `
+}
+
+let vhello1 = new Vue(
+    {
+        el: "#hello1",
+        data: {
+            mytext: ""
+        },
+        components: {
+            'hello-two': myLocalComp
         }
     }
 )

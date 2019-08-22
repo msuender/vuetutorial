@@ -121,10 +121,15 @@
 </div>
 
 <div id="hello">
+    <h1>Global Component</h1>
   <hello-one sometext="some text"></hello-one>
-  <code><hello-one sometext="some text"></hello-one></code>
   <span>NO <code>:</code> used for props!</span>
 </div>
+
+<div id="hello1">
+  <h1>Local Component</h1>
+    <hello-two mytext="some text"></hello-two>
+  </div>
 
 <script src="scripts.js"></script>
 
