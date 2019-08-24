@@ -213,6 +213,7 @@ let helloData = { h1: "HELLO ALL :-)"};
 //global registered component
 
 Vue.component('say-hello', {
+        // data MUST be a function!!
         data: function() {
             return helloData;
         },
@@ -263,6 +264,37 @@ let vhello1 = new Vue(
         },
         components: {
             'hello-two': myLocalComp
+        }
+    }
+)
+
+//custom events
+
+const myEventComp = {
+    props: ['counter','stupidtext'],
+    template: `
+    <div>
+    <h2>Custom Event</h2>
+    <button @click="$emit('counter-pp')">Set counter with custom event</button>
+    <p>The counter is: {{ counter }} and {{ stupidtext }}</p>
+    </div>
+    `
+}
+
+let vcustcounter = new Vue (
+    {
+        el: "#custcounter",
+        data: {
+            counter: 0,
+            stupidtext: "blaaa"
+        },
+        components: {
+            'my-cust-counter': myEventComp
+        },
+        methods: {
+            counterpp(){
+                this.counter++;
+            }
         }
     }
 )
