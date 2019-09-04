@@ -214,22 +214,28 @@ let helloData = { h1: "HELLO ALL :-)"};
 
 Vue.component('say-hello', {
         // data MUST be a function!!
-        data: function() {
-            return helloData;
-        },
+        props: ['hellodata'],
         template: `
-        <h1>{{ h1 }}</h1>
+        <h1>{{ hellodata }}</h1>
         `
     }
 )
 
 // <div> needed to wrap the component used!!
 Vue.component('hello-one', {
-        props: ['sometext'],
+        props: ['sometext','hellodata','datatext'],
+        data: function () {
+            return { 
+                localtext: "this is a fix text definect in the component data",
+                compdatatext: "I AM FIX TEXT variable in data ---> " + this.datatext}
+        },
         template: `
         <div>
-            <say-hello></say-hello>
-            And here {{ sometext }}
+            <p>First a text passed from the Vue to the component and then to a sub-component with :bind</p>
+            <say-hello :hellodata="hellodata"></say-hello>
+            And here text passed directly from the Vue: {{ sometext }} <br>
+            Finally data defined directly in the component: {{ localtext }} <br>
+            Then we have text defined in the Vue passed into the component via data: {{ compdatatext }}
         </div>
         `
     }
@@ -240,7 +246,9 @@ let vhello = new Vue(
     {
         el: "#hello",
         data: {
-            sometext: ""
+            sometext: "",
+            hellodata: "",
+            datatext: "beeeh"
         }
     }
 )
@@ -279,6 +287,12 @@ const myEventComp = {
     <p>The counter is: {{ counter }} and {{ stupidtext }}</p>
     </div>
     `
+}
+
+const myDataCounter = {
+    props: ['thedata'],
+    data: function () { return {thedata: this.thedata} },
+
 }
 
 let vcustcounter = new Vue (
