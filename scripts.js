@@ -226,7 +226,7 @@ Vue.component('hello-one', {
         props: ['sometext','hellodata','datatext'],
         data: function () {
             return { 
-                localtext: "this is a fix text definect in the component data",
+                localtext: "this is a fix text definect in the component data function",
                 compdatatext: "I AM FIX TEXT variable in data ---> " + this.datatext}
         },
         template: `
@@ -235,7 +235,7 @@ Vue.component('hello-one', {
             <say-hello :hellodata="hellodata"></say-hello>
             And here text passed directly from the Vue: {{ sometext }} <br>
             Finally data defined directly in the component: {{ localtext }} <br>
-            Then we have text defined in the Vue passed into the component via data: {{ compdatatext }}
+            Then we have text passed from the Vue data into a new variable of the component data: {{ compdatatext }}
         </div>
         `
     }
@@ -246,8 +246,8 @@ let vhello = new Vue(
     {
         el: "#hello",
         data: {
-            sometext: "",
             hellodata: "",
+            sometext: "",
             datatext: "beeeh"
         }
     }
