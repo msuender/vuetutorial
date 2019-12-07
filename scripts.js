@@ -6,7 +6,7 @@ let items = [
         { name: "Drei", preis: 3 },
     ];
 
-const brightcolor = "yellow";
+const brightcolor = "orange";
 
 var app = new Vue({
     el: "#app",
@@ -89,9 +89,9 @@ var fl = new Vue(
     {
         el: '#fulllist',
         data: {
-            items,
-            title: "My Titel",  
-            subtitle: ""
+            items,  //holt const
+            title: "My Titel",  //Text für Titel
+            subtitle: ""  //Text aus html binding
         }
     }
 )
@@ -226,8 +226,8 @@ Vue.component('hello-one', {
         props: ['sometext','hellodata','datatext'],
         data: function () {
             return { 
-                localtext: "this is a fix text definect in the component data function",
-                compdatatext: "I AM FIX TEXT variable in data ---> " + this.datatext}
+                localtext: "this is a fix text defined in the component data function",
+                compdatatext: "I AM FIX TEXT, text coming from a variable in data ---> " + this.datatext}
         },
         template: `
         <div>
@@ -308,6 +308,28 @@ let vcustcounter = new Vue (
         methods: {
             counterpp(){
                 this.counter++;
+            }
+        }
+    }
+)
+
+
+// WATCH
+
+let dataWatched = { wd: 'a', nwd: null};
+
+let vwatcher = new Vue(
+    {
+        el: "#watcher",
+        data: dataWatched,
+        watch: {
+            wd: function() {
+                alert("wd has changed!");
+            }
+        },
+        methods: {
+            changeIt: function(){
+                this.wd = 'b';
             }
         }
     }

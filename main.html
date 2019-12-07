@@ -3,7 +3,9 @@
     <title>Vue Tutorial</title>
     <meta charset="UTF-8">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+<link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" />
+<link rel="stylesheet" href="mystyle.css"/>
+
 </head>
 <body>
 
@@ -106,7 +108,7 @@
   <div>
     <h4>Same with SELECT</h4>
     <select v-model= "selectedDrink">
-      <option v-for="option in options" :key= "options.name" :value="option.value">{{ option.name }}</option>
+      <option v-for="option in options" :key= "options.value" :value="option.name">{{ option.name }}</option>
     </select>
   </div>
   You selected: {{ selectedDrink }}
@@ -123,9 +125,11 @@
 <div id="hello">
     <h1>Global Component</h1>
   <hello-one hellodata= "subidubi" sometext="soooome text" :datatext="datatext"></hello-one>
-  <b>Note:</b>
-  <span>NO <code>:</code> used for props if there is no data defined in the Vue!</span>
-  <span>WITH <code>:</code> used for props you will pass data to the component, can be values or variables defined in the data section of the Vue!</span>
+  <p>
+    <b>Note:</b>
+    <span>NO <code>:</code> used for props if there is no data defined in the Vue!</span>
+    <span>WITH <code>:</code> used for props you will pass data to the component, can be values or variables defined in the data section of the Vue!</span>
+  </p>
 </div>
 
 <div id="hello1">
@@ -137,6 +141,13 @@
   <my-cust-counter :counter="counter" :stupidtext="stupidtext" @counter-pp="counterpp"></my-cust-counter>
   <code>Important 1: data initialized in the Vue needs to be :bound to be passed as props to the component</code><br>
   <code>Important 2: the button in the template emits a customer event that needs to be caught in the customer element and routed to the method of the Vue</code>
+</div>
+
+<div id="watcher">
+  <h3>Watcher</h3>
+The dataWatched variable a has the value {{ wd }} <br>
+The notWachedData variable has the value {{ nwd }} <br>
+<button @click="changeIt">Change a to b</button>
 </div>
 
 <script src="scripts.js"></script>
