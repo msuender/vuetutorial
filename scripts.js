@@ -324,6 +324,11 @@ let vwatcher = new Vue(
     {
         el: "#watcher",
         data: dataWatched,
+        computed: {
+            computedMessage: function(){
+                return 'Text generated in the method computedMessage WITHOUT declaring the data!';
+            }
+        },
         watch: {
             wd: function() {
                 alert("wd has changed!");
@@ -336,7 +341,7 @@ let vwatcher = new Vue(
             }
         },
         mounted: function(){
-                this.mountedText = 'mouuunted';
-            }
+                this.mountedText = 'I was mounted';
+            },
     }
 )
