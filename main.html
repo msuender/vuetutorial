@@ -147,6 +147,8 @@
   <h3>Watcher</h3>
 The dataWatched variable a has the value {{ wd }} <br>
 The notWachedData variable has the value {{ nwd }} <br>
+Some condition: {{ (nwd===null) ? 'nwd is null' : 'nwd is not null'}}<br>
+Here is some text that is displayed when the instance got mounted: {{ mountedText }}<br>
 <button @click="changeIt">Change a to b</button>
 </div>
 

@@ -316,8 +316,10 @@ let vcustcounter = new Vue (
 
 // WATCH
 
-let dataWatched = { wd: 'a', nwd: null};
+let dataWatched = { wd: 'a', nwd: null, mountedText: ''};
 
+
+//watch needs to be BEFORE methods
 let vwatcher = new Vue(
     {
         el: "#watcher",
@@ -330,7 +332,11 @@ let vwatcher = new Vue(
         methods: {
             changeIt: function(){
                 this.wd = 'b';
+                this.nwd = 'c'
             }
-        }
+        },
+        mounted: function(){
+                this.mountedText = 'mouuunted';
+            }
     }
 )
