@@ -3,6 +3,7 @@
     <title>Vue Tutorial</title>
     <meta charset="UTF-8">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" />
 <link rel="stylesheet" href="mystyle.css"/>
 
@@ -147,11 +148,18 @@
   <h3>Watcher</h3>
 The dataWatched variable a has the value {{ wd }} <br>
 The notWachedData variable has the value {{ nwd }} <br>
-Some condition: {{ (nwd===null) ? 'nwd is null' : 'nwd is not null'}}<br>
-<code>{{ (nwd===null) ? 'nwd is null' : 'nwd is not null'}}</code><br>
+Some condition: {{ (nwd===null) ? 'nwd is null' : 'nwd is NOT null'}} (value of nwd is changed to not null by pressing the button<br>
+<span v-pre><code>{{ (nwd===null) ? 'nwd is null' : 'nwd is not null'}}</code></span><br>
 Here is some text that is displayed when the instance got mounted: {{ mountedText }}<br>
 Here is some computed text: {{ computedMessage }}<br>
 <button @click="changeIt">Change a to b</button>
+</div>
+
+
+<div id="axiosdemo">
+<h3>Axios with async</h3>
+Get the data via GET: {{ receivedData }}<br>
+<button @click="getTheData">Get Data via Axios</button>
 </div>
 
 <script src="scripts.js"></script>

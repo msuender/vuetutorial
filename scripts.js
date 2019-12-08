@@ -345,3 +345,24 @@ let vwatcher = new Vue(
             },
     }
 )
+
+//get data with axios
+
+let vaxiosdemo = new Vue(
+    {
+        el: "#axiosdemo",
+        data: { receivedData: null },
+        methods: {
+            getTheData: async function () {
+                try {
+                    const response = await axios.get('http://dummy.restapiexample.com/api/v1/employee/1')
+                    this.receivedData = response.data;
+                } catch (error) {
+                    this.receivedData = 'Error! Could not reach the API. ' + error
+                }
+            }
+        }
+    }
+)
+
+
